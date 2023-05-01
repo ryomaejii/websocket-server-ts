@@ -23,6 +23,7 @@ wss.on("connection", (ws: ExtWebSocket) => {
 
   //connection is up, let's add a simple simple event
   ws.on("message", (message: string) => {
+    console.log(message);
     const messageJson = JSON.parse(message);
 
     // always send to all clients
@@ -31,7 +32,6 @@ wss.on("connection", (ws: ExtWebSocket) => {
         client.send(JSON.stringify(messageJson));
       }
     });
-    ws.send(JSON.stringify(messageJson));
   });
 });
 
